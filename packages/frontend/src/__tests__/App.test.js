@@ -3,6 +3,7 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import App from '../App';
+import { OVERDUE_REFRESH_INTERVAL_MS } from '../utils/overdueUtils';
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -231,5 +232,47 @@ describe('App Component', () => {
     const themToggleAfter = screen.getByRole('button', { name: /Switch to light mode/ });
     fireEvent.click(themToggleAfter);
     expect(localStorage.getItem('todoAppTheme')).toBe('light');
+  });
+
+  describe('overdue status recomputation', () => {
+    test('sets up a periodic overdue refresh interval and clears it on unmount', async () => {
+      const setIntervalSpy = jest.spyOn(global, 'setInterval');
+      const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
+
+      const { unmount } = render(<App />);
+
+      await waitFor(() => {
+        expect(screen.queryByText('Loading your todos...')).not.toBeInTheDocument();
+      });
+
+      expect(setIntervalSpy).toHaveBeenCalledWith(expect.any(Function), OVERDUE_REFRESH_INTERVAL_MS);
+
+      const call = setIntervalSpy.mock.calls.find(([, delay]) => delay === OVERDUE_REFRESH_INTERVAL_MS);
+      const result = setIntervalSpy.mock.results[setIntervalSpy.mock.calls.indexOf(call)];
+
+      unmount();
+
+      expect(clearIntervalSpy).toHaveBeenCalledWith(result.value);
+
+      setIntervalSpy.mockRestore();
+      clearIntervalSpy.mockRestore();
+    });
+
+    test('removes the overdue indicator immediately after completing an overdue todo', async () => {
+      render(<App />);
+
+      await waitFor(() => {
+        expect(screen.getByText('Learn React')).toBeInTheDocument();
+      });
+
+      expect(screen.getByText('Overdue')).toBeInTheDocument();
+
+      const checkbox = screen.getAllByRole('checkbox')[0];
+      fireEvent.click(checkbox);
+
+      await waitFor(() => {
+        expect(screen.queryByText('Overdue')).not.toBeInTheDocument();
+      });
+    });
   });
 });

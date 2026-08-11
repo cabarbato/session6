@@ -31,6 +31,7 @@ For todo items determined overdue:
 3. Large screens: overdue icon and visible text label are both shown.
 4. Indicator remains distinguishable without relying only on color.
 5. Due-date context remains visible to explain overdue status.
+6. The overdue icon carries an accessible name ("Overdue") independent of screen size, so assistive technology users receive the status even when the text label is visually hidden on small screens.
 
 For non-overdue items:
 1. No overdue indicator is shown.

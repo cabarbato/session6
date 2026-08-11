@@ -18,9 +18,9 @@
 
 **Purpose**: Prepare shared files needed by all stories.
 
-- [ ] T001 Create overdue utility module scaffold in packages/frontend/src/utils/overdueUtils.js
-- [ ] T002 [P] Create overdue utility test scaffold in packages/frontend/src/utils/__tests__/overdueUtils.test.js
-- [ ] T003 [P] Add overdue indicator base style placeholders in packages/frontend/src/App.css
+- [X] T001 Create overdue utility module scaffold in packages/frontend/src/utils/overdueUtils.js
+- [X] T002 [P] Create overdue utility test scaffold in packages/frontend/src/utils/__tests__/overdueUtils.test.js
+- [X] T003 [P] Add overdue indicator base style placeholders in packages/frontend/src/App.css
 
 ---
 
@@ -30,11 +30,11 @@
 
 **CRITICAL**: Complete this phase before starting user stories.
 
-- [ ] T004 Implement UTC date normalization and overdue derivation helpers in packages/frontend/src/utils/overdueUtils.js
-- [ ] T005 [P] Add unit tests for overdue helper edge cases (completed, null due date, invalid due date, UTC boundary) in packages/frontend/src/utils/__tests__/overdueUtils.test.js
-- [ ] T006 Integrate overdue derivation into todo fetch/update flow in packages/frontend/src/App.js
-- [ ] T007 Implement periodic overdue recomputation timer (<=60 seconds) with cleanup in packages/frontend/src/App.js
-- [ ] T008 [P] Add App-level tests for periodic and action-triggered overdue recomputation in packages/frontend/src/__tests__/App.test.js
+- [X] T004 Implement UTC date normalization and overdue derivation helpers in packages/frontend/src/utils/overdueUtils.js
+- [X] T005 [P] Add unit tests for overdue helper edge cases (completed, null due date, invalid due date, UTC boundary) in packages/frontend/src/utils/__tests__/overdueUtils.test.js
+- [X] T006 Integrate overdue derivation into todo fetch/update flow in packages/frontend/src/App.js
+- [X] T007 Implement periodic overdue recomputation timer (<=60 seconds) with cleanup in packages/frontend/src/App.js
+- [X] T008 [P] Add App-level tests for periodic and action-triggered overdue recomputation in packages/frontend/src/__tests__/App.test.js
 
 **Checkpoint**: Foundation complete; user stories can proceed.
 
@@ -46,11 +46,11 @@
 
 **Independent Test**: Load a mix of past-due, future-due, and completed todos and verify only incomplete past-due todos show overdue state.
 
-- [ ] T009 [US1] Add overdue state mapping for todos rendered by list in packages/frontend/src/components/TodoList.js
-- [ ] T010 [US1] Render overdue indicator container for overdue todos in packages/frontend/src/components/TodoCard.js
-- [ ] T011 [P] [US1] Add TodoCard tests for overdue shown/hidden and completed exclusion in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T012 [P] [US1] Add TodoList tests for mixed-date overdue visibility in packages/frontend/src/components/__tests__/TodoList.test.js
-- [ ] T013 [US1] Ensure overdue state refreshes after create/edit/toggle/delete handlers in packages/frontend/src/App.js
+- [X] T009 [US1] Add overdue state mapping for todos rendered by list in packages/frontend/src/components/TodoList.js
+- [X] T010 [US1] Render overdue indicator container for overdue todos in packages/frontend/src/components/TodoCard.js
+- [X] T011 [P] [US1] Add TodoCard tests for overdue shown/hidden and completed exclusion in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T012 [P] [US1] Add TodoList tests for mixed-date overdue visibility in packages/frontend/src/components/__tests__/TodoList.test.js
+- [X] T013 [US1] Ensure overdue state refreshes after create/edit/toggle/delete handlers in packages/frontend/src/App.js
 
 **Checkpoint**: User Story 1 works independently and satisfies MVP overdue identification.
 
@@ -62,11 +62,11 @@
 
 **Independent Test**: For overdue items, verify due-date context is visible and large-screen view includes explicit overdue text label.
 
-- [ ] T014 [US2] Add explicit overdue text label rendering for large screens in packages/frontend/src/components/TodoCard.js
-- [ ] T015 [P] [US2] Add responsive CSS rules (small: icon-only, large: icon+label) in packages/frontend/src/App.css
-- [ ] T016 [US2] Keep due-date context coupled to overdue indicator presentation in packages/frontend/src/components/TodoCard.js
-- [ ] T017 [P] [US2] Add responsive overdue presentation assertions in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T018 [US2] Add test coverage for due-date edit removing overdue state in packages/frontend/src/__tests__/App.test.js
+- [X] T014 [US2] Add explicit overdue text label rendering for large screens in packages/frontend/src/components/TodoCard.js
+- [X] T015 [P] [US2] Add responsive CSS rules (small: icon-only, large: icon+label) in packages/frontend/src/App.css
+- [X] T016 [US2] Keep due-date context coupled to overdue indicator presentation in packages/frontend/src/components/TodoCard.js
+- [X] T017 [P] [US2] Add responsive overdue presentation assertions in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T018 [US2] Add test coverage for due-date edit removing overdue state in packages/frontend/src/__tests__/App.test.js
 
 **Checkpoint**: User Story 2 works independently with clear overdue explanation behavior.
 
@@ -78,11 +78,11 @@
 
 **Independent Test**: Verify all overdue items are distinguishable at a glance across viewport sizes without manually comparing dates.
 
-- [ ] T019 [US3] Add non-color visual emphasis styling for overdue cards in packages/frontend/src/App.css
-- [ ] T020 [US3] Ensure overdue icon semantics/labels remain accessible in packages/frontend/src/components/TodoCard.js
-- [ ] T021 [P] [US3] Add tests for non-color-only distinguishability signals in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T022 [P] [US3] Add tests for missing/invalid dueDate remaining non-overdue and visible in packages/frontend/src/components/__tests__/TodoCard.test.js
-- [ ] T023 [US3] Add end-to-end flow assertions for prioritization scenario in packages/frontend/src/components/__tests__/TodoList.test.js
+- [X] T019 [US3] Add non-color visual emphasis styling for overdue cards in packages/frontend/src/App.css
+- [X] T020 [US3] Ensure overdue icon semantics/labels remain accessible in packages/frontend/src/components/TodoCard.js
+- [X] T021 [P] [US3] Add tests for non-color-only distinguishability signals in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T022 [P] [US3] Add tests for missing/invalid dueDate remaining non-overdue and visible in packages/frontend/src/components/__tests__/TodoCard.test.js
+- [X] T023 [US3] Add end-to-end flow assertions for prioritization scenario in packages/frontend/src/components/__tests__/TodoList.test.js
 
 **Checkpoint**: User Story 3 works independently and supports prioritization outcomes.
 
@@ -92,9 +92,9 @@
 
 **Purpose**: Final validation and documentation alignment across stories.
 
-- [ ] T024 [P] Update quickstart validation notes with final verification steps in specs/001-overdue-todo-items/quickstart.md
-- [ ] T025 [P] Reconcile UI behavior wording with implemented behavior in specs/001-overdue-todo-items/contracts/todo-overdue-ui-contract.md
-- [ ] T026 Run frontend and backend test suites and capture pass confirmation in specs/001-overdue-todo-items/quickstart.md
+- [X] T024 [P] Update quickstart validation notes with final verification steps in specs/001-overdue-todo-items/quickstart.md
+- [X] T025 [P] Reconcile UI behavior wording with implemented behavior in specs/001-overdue-todo-items/contracts/todo-overdue-ui-contract.md
+- [X] T026 Run frontend and backend test suites and capture pass confirmation in specs/001-overdue-todo-items/quickstart.md
 
 ---
 

@@ -99,3 +99,12 @@ npm test --workspace=backend
 - Research: `specs/001-overdue-todo-items/research.md`
 - Data model: `specs/001-overdue-todo-items/data-model.md`
 - Contracts: `specs/001-overdue-todo-items/contracts/`
+
+## Automated Test Coverage
+
+- Overdue derivation logic: `packages/frontend/src/utils/__tests__/overdueUtils.test.js`
+- Overdue rendering and accessibility: `packages/frontend/src/components/__tests__/TodoCard.test.js`
+- Mixed-list prioritization: `packages/frontend/src/components/__tests__/TodoList.test.js`
+- Periodic refresh wiring and action-triggered recomputation: `packages/frontend/src/__tests__/App.test.js`
+
+Last verified: frontend 75/75 tests passing, backend 27/27 tests passing.

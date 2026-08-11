@@ -366,6 +366,41 @@ p {
   color: var(--text-secondary);
 }
 
+/* Overdue Indicator */
+.todo-card-overdue {
+  border-left: 4px solid var(--danger-color);
+}
+
+.overdue-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 2px 6px;
+  border: 1px solid var(--danger-color);
+  border-radius: var(--radius-sm);
+  color: var(--danger-color);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.overdue-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Small screens: icon-only overdue indicator (text hidden visually) */
+.overdue-text {
+  display: none;
+}
+
+/* Large screens: icon plus visible text label */
+@media (min-width: 641px) {
+  .overdue-text {
+    display: inline;
+  }
+}
+
 .todo-actions {
   display: flex;
   gap: 8px;

@@ -4,6 +4,7 @@ import TodoList from './components/TodoList';
 import ThemeToggle from './components/ThemeToggle';
 import ConfirmDialog from './components/ConfirmDialog';
 import TodoService from './services/todoService';
+import { OVERDUE_REFRESH_INTERVAL_MS } from './utils/overdueUtils';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deletingTodoId, setDeletingTodoId] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [, setOverdueRefreshTick] = useState(0);
 
   // Initialize theme on mount
   useEffect(() => {
@@ -31,6 +33,15 @@ function App() {
   // Fetch todos on mount
   useEffect(() => {
     fetchTodos();
+  }, []);
+
+  // Re-render periodically so overdue status stays current while the list is open
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setOverdueRefreshTick((tick) => tick + 1);
+    }, OVERDUE_REFRESH_INTERVAL_MS);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const fetchTodos = async () => {
