@@ -2,11 +2,11 @@
 Sync Impact Report
 - Version change: N/A -> 1.0.0
 - Modified principles:
-	- [PRINCIPLE_1_NAME] -> I. Single-Responsibility Modular Design
-	- [PRINCIPLE_2_NAME] -> II. Contract-First API and Data Integrity
-	- [PRINCIPLE_3_NAME] -> III. Test-Driven Quality Gates (NON-NEGOTIABLE)
-	- [PRINCIPLE_4_NAME] -> IV. UX Consistency, Accessibility, and Theming
-	- [PRINCIPLE_5_NAME] -> V. Simplicity, Reliability, and Maintainability
+	- Placeholder Principle 1 -> I. Single-Responsibility Modular Design
+	- Placeholder Principle 2 -> II. Contract-First API and Data Integrity
+	- Placeholder Principle 3 -> III. Test-Driven Quality Gates (NON-NEGOTIABLE)
+	- Placeholder Principle 4 -> IV. UX Consistency, Accessibility, and Theming
+	- Placeholder Principle 5 -> V. Simplicity, Reliability, and Maintainability
 - Added sections:
 	- Delivery Constraints and Scope Boundaries
 	- Development Workflow and Review Gates
