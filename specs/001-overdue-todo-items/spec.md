@@ -8,6 +8,14 @@
 
 **Input**: User description: "Support for overdue todo items so users can identify and distinguish incomplete tasks that are past due and prioritize work quickly."
 
+## Clarifications
+
+### Session 2026-08-11
+
+- Q: Which date boundary should define when a todo becomes overdue? -> A: Use UTC date instead of local date.
+- Q: How should overdue items be visually distinguished to ensure accessibility for all users? -> A: Small screens use icon-only; large screens use icon plus text label.
+- Q: When a todo crosses from not-overdue to overdue while the list is already open, when should the UI update its overdue status? -> A: Update automatically on a periodic timer and on user actions.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Identify overdue tasks at a glance (Priority: P1)
@@ -58,7 +66,7 @@ As a todo user, I can use overdue indicators to decide which tasks to handle fir
 ### Edge Cases
 
 - What happens when a todo has no due date?
-- How does the system handle a due date that becomes overdue while the list is open?
+- How does the system handle a due date that becomes overdue while the list is open? The item updates to overdue automatically without requiring a page reload.
 - What happens when system date or timezone changes between sessions?
 - How does the system handle invalid or missing due-date values received from persisted data?
 
@@ -66,13 +74,18 @@ As a todo user, I can use overdue indicators to decide which tasks to handle fir
 
 ### Functional Requirements
 
-- **FR-001**: System MUST determine overdue status for each todo using this rule: due date is earlier than the current date and todo is not completed.
+- **FR-001**: System MUST determine overdue status for each todo using this rule: due date is earlier than the current UTC date and todo is not completed.
 - **FR-002**: System MUST display a clear visual overdue indicator for every overdue todo in the main list view.
+- **FR-002a**: On small screens, overdue items MUST display an overdue icon indicator.
+- **FR-002b**: On large screens, overdue items MUST display an overdue icon plus a visible text label.
 - **FR-003**: System MUST NOT display overdue indicators for completed todos, even if their due date is in the past.
 - **FR-004**: System MUST NOT display overdue indicators for todos that have no due date.
 - **FR-005**: System MUST update overdue status whenever a todo is created, edited, completed, uncompleted, or deleted and on each list refresh.
+- **FR-005a**: While a todo list view is open, system MUST re-evaluate overdue status on a periodic interval of at most one minute.
+- **FR-005b**: While a todo list view is open, system MUST re-evaluate overdue status after user actions that can affect overdue determination.
 - **FR-006**: Users MUST be able to distinguish overdue todos from non-overdue todos without manually comparing due dates.
 - **FR-007**: System MUST present due-date context alongside overdue status so users can understand why a todo is overdue.
+- **FR-007a**: Overdue indicators MUST remain distinguishable without relying on color alone.
 - **FR-008**: System MUST apply overdue status consistently across all views where todo items are listed.
 
 ### Key Entities *(include if feature involves data)*
@@ -91,7 +104,7 @@ As a todo user, I can use overdue indicators to decide which tasks to handle fir
 
 ## Assumptions
 
-- Current date is evaluated using the user-visible local date context.
+- Current date is evaluated using a UTC date boundary across all sessions.
 - Existing todo persistence already stores due date and completion status needed for overdue evaluation.
 - Overdue identification is limited to visual distinction and does not introduce sorting, filtering, or notifications in this feature.
 - The feature applies to existing single-user todo workflows and does not change authentication or user model scope.
